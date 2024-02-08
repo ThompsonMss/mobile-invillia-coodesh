@@ -1,8 +1,8 @@
 import { useColorScheme } from 'react-native'
-
-import { Splash } from '@Domain/pages/Splash/screen'
-import { getTheme } from '@Shared/styles/themes'
 import { ThemeProvider } from 'styled-components/native'
+
+import { getTheme } from '@Shared/styles/themes'
+import { Routes } from './routes'
 
 export default function Main(): React.JSX.Element {
   const colorScheme = useColorScheme()
@@ -10,7 +10,7 @@ export default function Main(): React.JSX.Element {
 
   return (
     <ThemeProvider theme={theme}>
-      <Splash />
+      <Routes />
     </ThemeProvider>
   )
 }
