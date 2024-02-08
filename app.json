@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "coodesh",
-    "slug": "coodesh",
+    "name": "My Dictionary",
+    "slug": "mydictionary",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
