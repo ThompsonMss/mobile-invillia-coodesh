@@ -9,8 +9,12 @@ import {
   withDelay,
   withTiming
 } from 'react-native-reanimated'
+import { useController } from '../controller/useController'
 
 export function Splash(): React.JSX.Element {
+  // invoking controller
+  useController()
+
   const valueContainerBrand = useSharedValue(
     LocalStyles.MARGIN_BOTTOM_WRAPPER_BRAND
   )
