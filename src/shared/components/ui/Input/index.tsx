@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-import { TextInputProps } from 'react-native'
+import { TextInput, TextInputProps } from 'react-native'
 import * as LocalStyles from './styles'
 import { Typography } from '../Typograph'
 
@@ -15,11 +15,11 @@ interface InterfaceInput extends TextInputProps {
   error?: boolean
 }
 
-export function Input({ label, isPassword, error, ...rest }: InterfaceInput) {
+function InputComponent({ label, error, isPassword, ...rest }: InterfaceInput, ref: any) {
   const theme = useTheme()
 
   const [focused, setFocused] = React.useState(false)
-  const [hideValueInput, setHideValueInput] = React.useState(false)
+  const [hideValueInput, setHideValueInput] = React.useState(true)
 
   return (
     <LocalStyles.Container>
@@ -30,6 +30,7 @@ export function Input({ label, isPassword, error, ...rest }: InterfaceInput) {
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           secureTextEntry={!!isPassword && hideValueInput}
+          ref={ref}
         />
 
         {isPassword && (
@@ -45,3 +46,5 @@ export function Input({ label, isPassword, error, ...rest }: InterfaceInput) {
     </LocalStyles.Container>
   )
 }
+
+export const Input = forwardRef(InputComponent)

@@ -9,7 +9,7 @@ module.exports = function (api) {
           "@Store": "./src/store",
           "@Routes": "./src/routes",
           "@Shared": "./src/shared",
-          "@Config": "./config"
+          "@Config": "./src/config"
         },
         "extensions": [
           ".ts",

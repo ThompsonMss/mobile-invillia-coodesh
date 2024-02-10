@@ -1,3 +1,6 @@
+import { app } from '@Config/firebase'
+import { UserModel } from '@Domain/models/UserModel'
+
 import { getErrorMessageHelper } from '@Shared/helpers/getErrorMessageHelper'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
@@ -6,16 +9,10 @@ export interface InterfaceRequestDoLogin {
   password: string
 }
 
-export async function signup(
-  dataRequest: InterfaceRequestDoLogin
-): Promise<void> {
+export async function signup(dataRequest: InterfaceRequestDoLogin): Promise<UserModel> {
   try {
-    const auth = getAuth()
-    await createUserWithEmailAndPassword(
-      auth,
-      dataRequest.email,
-      dataRequest.password
-    )
+    const auth = getAuth(app)
+    return await createUserWithEmailAndPassword(auth, dataRequest.email, dataRequest.password)
   } catch (error) {
     throw new Error(getErrorMessageHelper(error))
   }

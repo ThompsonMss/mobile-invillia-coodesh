@@ -36,7 +36,7 @@ export function ContentLogo({ valueContent }: InterfaceContentLogo) {
     const scale = interpolate(
       valueContent.value,
       [0, HEIGHT_CONTENT_SIGNIN],
-      [0.7, 1],
+      [0.8, 1],
       Extrapolation.CLAMP
     )
 

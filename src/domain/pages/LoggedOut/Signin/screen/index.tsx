@@ -10,6 +10,8 @@ import { useSharedValue, withDelay, withSequence, withTiming } from 'react-nativ
 import { HEIGHT_CONTENT_SIGNIN } from '../components/ContentSignin/styles'
 import { HEIGHT_CONTENT_SIGNUP } from '../components/ContentSignup/styles'
 
+export type TypeFormSelected = 'signin' | 'signup' | null
+
 export function Signin() {
   const theme = useTheme()
 
@@ -18,7 +20,11 @@ export function Signin() {
   const valueContentFormSignin = useSharedValue(HEIGHT_CONTENT_SIGNIN)
   const valueContentFormSignup = useSharedValue(HEIGHT_CONTENT_SIGNUP)
 
+  const [formSelected, setFormSelected] = React.useState<TypeFormSelected>(null)
+
   function handleShowFormSingup() {
+    setFormSelected('signup')
+
     if (valueContentFormSignin.value === HEIGHT_CONTENT_SIGNIN) {
       valueContentFormSignup.value = withTiming(0, { duration: 1000 })
       valueContentForms.value = withTiming(0, { duration: 1000 })
@@ -38,6 +44,8 @@ export function Signin() {
   }
 
   function handleShowFormSingin() {
+    setFormSelected('signin')
+
     if (valueContentFormSignup.value === HEIGHT_CONTENT_SIGNUP) {
       valueContentFormSignin.value = withTiming(0, { duration: 1000 })
       valueContentForms.value = withTiming(0, { duration: 1000 })
@@ -54,6 +62,12 @@ export function Signin() {
         withTiming(0, { duration: 1000 })
       )
     }
+  }
+
+  function handleHideForms() {
+    valueContentFormSignin.value = withTiming(HEIGHT_CONTENT_SIGNIN, { duration: 1000 })
+    valueContentFormSignup.value = withTiming(HEIGHT_CONTENT_SIGNUP, { duration: 1000 })
+    valueContentForms.value = withTiming(HEIGHT_CONTENT_SIGNUP, { duration: 1000 })
   }
 
   return (
@@ -76,12 +90,14 @@ export function Signin() {
 
       <LocalComponents.ContentSignin
         valueContent={valueContentFormSignin}
-        handleShowFormSingup={handleShowFormSingup}
+        handleHideForms={handleHideForms}
+        formSelected={formSelected === 'signin'}
       />
 
       <LocalComponents.ContentSignup
         valueContent={valueContentFormSignup}
-        handleShowFormSingin={handleShowFormSingin}
+        handleHideForms={handleHideForms}
+        formSelected={formSelected === 'signup'}
       />
     </LocalStyles.Container>
   )
