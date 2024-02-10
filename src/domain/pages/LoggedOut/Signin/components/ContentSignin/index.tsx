@@ -46,8 +46,8 @@ export function ContentSignin({
           name="email"
           render={({ field: { onChange, value } }) => (
             <Input
-              label="E-mail:"
-              placeholder="Ex.: fulano@gmail.com"
+              label="Mail:"
+              placeholder="Enter your email"
               onChangeText={onChange}
               value={value}
               error={!!controller.states.errors['email']}
@@ -67,8 +67,8 @@ export function ContentSignin({
           name="password"
           render={({ field: { onChange, value } }) => (
             <Input
-              label="Senha:"
-              placeholder="Insira sua senha"
+              label="Password:"
+              placeholder="Enter your password"
               onChangeText={onChange}
               value={value}
               error={!!controller.states.errors['password']}
@@ -85,7 +85,7 @@ export function ContentSignin({
         />
 
         <Button
-          text="Entrar"
+          text="Enter"
           loading={controller.states.loading}
           variant="primary"
           onPress={controller.handles.handleSubmit}
@@ -99,7 +99,7 @@ export function ContentSignin({
                 handleHideForms()
               }}
             >
-              <Typography text="Voltar" variant="anco2" color={'secondary'} />
+              <Typography text="Go back" variant="anco2" color={'secondary'} />
             </LocalStyles.Link>
           </LocalStyles.ContainerInfo>
         )}

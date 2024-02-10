@@ -16,17 +16,9 @@ export function Routes() {
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name={routeName.Home} component={Home} />
 
-        <Stack.Screen
-          name={routeName.Signin}
-          component={Signin}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name={routeName.Signin} component={Signin} options={{ headerShown: false }} />
 
-        <Stack.Screen
-          name={routeName.Splash}
-          component={Splash}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name={routeName.Splash} component={Splash} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -62,7 +62,7 @@ export function ContentLogo({ valueContent }: InterfaceContentLogo) {
   return (
     <>
       <LocalStyles.ContainerTextIntro style={stylesTextIntro}>
-        <Typography text="Vamos começar!" variant="body1" color={'gray100'} />
+        <Typography text="Let's get Starting!" variant="body1" color={'gray100'} />
       </LocalStyles.ContainerTextIntro>
 
       <LocalStyles.ContainerLogoImage style={stylesLogoImage}>

@@ -39,15 +39,15 @@ export function ContentSignup({
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <LocalStyles.Container style={[styles, stylesKeyboard]}>
-        <Typography text="Cadastro" variant="heading" color={'gray600'} />
+        <Typography text="Register" variant="heading" color={'gray600'} />
 
         <Controller
           control={controller.states.control}
           name="email"
           render={({ field: { onChange, value } }) => (
             <Input
-              label="E-mail:"
-              placeholder="Ex.: fulano@gmail.com"
+              label="Mail:"
+              placeholder="Enter your email"
               onChangeText={onChange}
               value={value}
               error={!!controller.states.errors['email']}
@@ -67,8 +67,8 @@ export function ContentSignup({
           name="password"
           render={({ field: { onChange, value } }) => (
             <Input
-              label="Senha:"
-              placeholder="Insira sua senha"
+              label="Password:"
+              placeholder="Enter your password"
               onChangeText={onChange}
               value={value}
               error={!!controller.states.errors['password']}
@@ -85,7 +85,7 @@ export function ContentSignup({
         />
 
         <Button
-          text="Cadastrar"
+          text="Enter"
           loading={controller.states.loading}
           variant="primary"
           onPress={controller.handles.handleSubmit}
@@ -99,7 +99,7 @@ export function ContentSignup({
                 handleHideForms()
               }}
             >
-              <Typography text="Voltar" variant="anco2" color={'secondary'} />
+              <Typography text="Go back" variant="anco2" color={'secondary'} />
             </LocalStyles.Link>
           </LocalStyles.ContainerInfo>
         )}

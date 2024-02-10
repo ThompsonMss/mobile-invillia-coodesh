@@ -26,19 +26,19 @@ export function Signin() {
     setFormSelected('signup')
 
     if (valueContentFormSignin.value === HEIGHT_CONTENT_SIGNIN) {
-      valueContentFormSignup.value = withTiming(0, { duration: 1000 })
-      valueContentForms.value = withTiming(0, { duration: 1000 })
+      valueContentFormSignup.value = withTiming(0, { duration: 600 })
+      valueContentForms.value = withTiming(0, { duration: 600 })
     } else {
       valueContentFormSignin.value = withTiming(HEIGHT_CONTENT_SIGNIN, {
-        duration: 1000
+        duration: 600
       })
-      valueContentFormSignup.value = withDelay(1000, withTiming(0, { duration: 1000 }))
+      valueContentFormSignup.value = withDelay(600, withTiming(0, { duration: 600 }))
 
       valueContentForms.value = withSequence(
         withTiming(HEIGHT_CONTENT_SIGNIN, {
-          duration: 1000
+          duration: 600
         }),
-        withTiming(0, { duration: 1000 })
+        withTiming(0, { duration: 600 })
       )
     }
   }
@@ -47,27 +47,27 @@ export function Signin() {
     setFormSelected('signin')
 
     if (valueContentFormSignup.value === HEIGHT_CONTENT_SIGNUP) {
-      valueContentFormSignin.value = withTiming(0, { duration: 1000 })
-      valueContentForms.value = withTiming(0, { duration: 1000 })
+      valueContentFormSignin.value = withTiming(0, { duration: 600 })
+      valueContentForms.value = withTiming(0, { duration: 600 })
     } else {
       valueContentFormSignup.value = withTiming(HEIGHT_CONTENT_SIGNUP, {
-        duration: 1000
+        duration: 600
       })
-      valueContentFormSignin.value = withDelay(1000, withTiming(0, { duration: 1000 }))
+      valueContentFormSignin.value = withDelay(600, withTiming(0, { duration: 600 }))
 
       valueContentForms.value = withSequence(
         withTiming(HEIGHT_CONTENT_SIGNIN, {
-          duration: 1000
+          duration: 600
         }),
-        withTiming(0, { duration: 1000 })
+        withTiming(0, { duration: 600 })
       )
     }
   }
 
   function handleHideForms() {
-    valueContentFormSignin.value = withTiming(HEIGHT_CONTENT_SIGNIN, { duration: 1000 })
-    valueContentFormSignup.value = withTiming(HEIGHT_CONTENT_SIGNUP, { duration: 1000 })
-    valueContentForms.value = withTiming(HEIGHT_CONTENT_SIGNUP, { duration: 1000 })
+    valueContentFormSignin.value = withTiming(HEIGHT_CONTENT_SIGNIN, { duration: 600 })
+    valueContentFormSignup.value = withTiming(HEIGHT_CONTENT_SIGNUP, { duration: 600 })
+    valueContentForms.value = withTiming(HEIGHT_CONTENT_SIGNUP, { duration: 600 })
   }
 
   return (

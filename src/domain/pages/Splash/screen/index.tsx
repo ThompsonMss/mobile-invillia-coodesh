@@ -3,21 +3,14 @@ import React from 'react'
 import * as LocalStyles from './styles'
 import * as LocalComponents from '../components'
 
-import {
-  useSharedValue,
-  useAnimatedStyle,
-  withDelay,
-  withTiming
-} from 'react-native-reanimated'
+import { useSharedValue, useAnimatedStyle, withDelay, withTiming } from 'react-native-reanimated'
 import { useController } from '../controller/useController'
 
 export function Splash(): React.JSX.Element {
   // invoking controller
   useController()
 
-  const valueContainerBrand = useSharedValue(
-    LocalStyles.MARGIN_BOTTOM_WRAPPER_BRAND
-  )
+  const valueContainerBrand = useSharedValue(LocalStyles.MARGIN_BOTTOM_WRAPPER_BRAND)
 
   const valueOpacityLoad = useSharedValue(0)
 
@@ -34,10 +27,7 @@ export function Splash(): React.JSX.Element {
   })
 
   React.useEffect(() => {
-    valueContainerBrand.value = withDelay(
-      1500,
-      withTiming(0, { duration: 800 })
-    )
+    valueContainerBrand.value = withDelay(1500, withTiming(0, { duration: 800 }))
     valueOpacityLoad.value = withDelay(2200, withTiming(1, { duration: 800 }))
   }, [])
 

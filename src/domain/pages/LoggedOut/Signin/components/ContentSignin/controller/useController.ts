@@ -55,7 +55,7 @@ export function useController() {
 
   async function handleSigin(data: InterfaceForm) {
     if (data.password.length < 6) {
-      return Alert.alert('Atenção', 'A senha precisa ter no mínimo 6 caracteres.')
+      return Alert.alert('Attention', 'The password must be at least 6 characters long.')
     }
 
     exec(data).subscribe(onSuccess, onError)
@@ -77,10 +77,7 @@ export function useController() {
   }
 
   function onError(error: any) {
-    Alert.alert(
-      'Atenção',
-      `Não foi possível realizar o login. Por favor tente novamente.\n\nErro: ${error.message}`
-    )
+    Alert.alert('Attention', `Unable to login. Please try again.\n\nError: ${error.message}`)
   }
 
   return {

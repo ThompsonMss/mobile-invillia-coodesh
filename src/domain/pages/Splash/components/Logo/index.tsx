@@ -5,11 +5,7 @@ import * as LocalStyles from './styles'
 
 import { appInfoConstants } from '@Shared/constants/appInfoConstants'
 
-import {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring
-} from 'react-native-reanimated'
+import { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated'
 
 export function Logo() {
   const { height: heightScreen } = useWindowDimensions()
@@ -29,11 +25,5 @@ export function Logo() {
     }
   })
 
-  return (
-    <LocalStyles.Image
-      style={stylesLogo}
-      source={appInfoConstants.logo}
-      alt="Logotipo do aplicativo"
-    />
-  )
+  return <LocalStyles.Image style={stylesLogo} source={appInfoConstants.logo} alt="App logo" />
 }
