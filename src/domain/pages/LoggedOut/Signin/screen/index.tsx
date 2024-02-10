@@ -76,12 +76,12 @@ export function Signin() {
         <LocalStyles.SafeAreaView>
           <LocalComponents.ContentLogo valueContent={valueContentForms} />
           <LocalStyles.ContainerActions>
-            <UI.Button text="Login" onPress={handleShowFormSingin} variant="inverse" />
+            <UI.Button text="Signin" onPress={handleShowFormSingin} variant="inverse" />
 
             <LocalStyles.ContainerInfo>
-              <UI.Typography text="Não tenho uma conta?" variant="anco1" color={'gray100'} />
+              <UI.Typography text="Don't have an account?" variant="anco1" color={'gray100'} />
               <LocalStyles.Link onPress={handleShowFormSingup}>
-                <UI.Typography text="Registre-se!" variant="anco2" color={'inverse'} />
+                <UI.Typography text="Register!" variant="anco2" color={'inverse'} />
               </LocalStyles.Link>
             </LocalStyles.ContainerInfo>
           </LocalStyles.ContainerActions>
