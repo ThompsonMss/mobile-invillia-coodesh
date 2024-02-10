@@ -6,6 +6,8 @@ import { UserModel } from '@Domain/models/UserModel'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { routeName } from '@Routes/routeName'
 import { useSignin } from '@Domain/hooks/auth/useSignin'
+import { useDispatch } from 'react-redux'
+import { AuthActions } from '@Store/ducks/auth'
 
 interface InterfaceForm {
   email: string
@@ -14,6 +16,7 @@ interface InterfaceForm {
 
 export function useController() {
   const navigation = useNavigation()
+  const dispatch = useDispatch()
 
   const refInputEmail = React.useRef<TextInput>()
   const refInputPassword = React.useRef<TextInput>()
@@ -59,7 +62,7 @@ export function useController() {
   }
 
   function onSuccess(data: UserModel) {
-    // TODO - Salvar usuario no Redux.
+    dispatch(AuthActions.saveUser(data.user.uid))
 
     navigation.dispatch(
       CommonActions.reset({
