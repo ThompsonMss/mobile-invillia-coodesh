@@ -8,7 +8,6 @@ import { appInfoConstants } from '@Shared/constants/appInfoConstants'
 import {
   useSharedValue,
   useAnimatedStyle,
-  withDelay,
   withSpring
 } from 'react-native-reanimated'
 
@@ -17,7 +16,7 @@ export function NameApp() {
   const animatedText = useSharedValue(-heightScreen)
 
   React.useEffect(() => {
-    animatedText.value = withDelay(200, withSpring(0, { duration: 3000 }))
+    animatedText.value = withSpring(0, { duration: 3000 })
   }, [])
 
   const stylesText = useAnimatedStyle(() => {
@@ -31,8 +30,9 @@ export function NameApp() {
   })
 
   return (
-    <LocalStyles.Text style={stylesText}>
-      {appInfoConstants.name}
-    </LocalStyles.Text>
+    <LocalStyles.Image
+      style={stylesText}
+      source={appInfoConstants.logoAppOnlyName}
+    />
   )
 }

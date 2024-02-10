@@ -8,7 +8,6 @@ import { appInfoConstants } from '@Shared/constants/appInfoConstants'
 import {
   useSharedValue,
   useAnimatedStyle,
-  withDelay,
   withSpring
 } from 'react-native-reanimated'
 
@@ -17,7 +16,7 @@ export function Logo() {
   const animatedLogo = useSharedValue(heightScreen)
 
   React.useEffect(() => {
-    animatedLogo.value = withDelay(200, withSpring(0, { duration: 3000 }))
+    animatedLogo.value = withSpring(0, { duration: 3000 })
   }, [])
 
   const stylesLogo = useAnimatedStyle(() => {

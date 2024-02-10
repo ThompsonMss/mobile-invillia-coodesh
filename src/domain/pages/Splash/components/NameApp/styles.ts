@@ -3,9 +3,8 @@ import Animated from 'react-native-reanimated'
 import { Dimensions } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 
-export const Text = styled(Animated.Text)`
+export const Image = styled(Animated.Image)`
   transform: translateX(-${Dimensions.get('screen').height}px);
-  font-size: ${RFValue(22)}px;
-  font-weight: bold;
-  color: ${(props) => props.theme.colors.gray600};
+  width: ${RFValue(136)}px;
+  height: ${RFValue(22)}px;
 `
