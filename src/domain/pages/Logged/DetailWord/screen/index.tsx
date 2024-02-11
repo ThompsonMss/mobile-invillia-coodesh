@@ -1,0 +1,79 @@
+import { Button, Typography } from '@Shared/components/ui'
+import { useController } from '../controller/useController'
+import * as Localstyles from './styles'
+
+export function DetailWord() {
+  const controller = useController()
+
+  if (controller.states.loading || controller.states.error) {
+    return (
+      <Localstyles.ContainerLoad>
+        <Typography text="Carregando" variant="body4" color={'primary'} />
+        <Localstyles.LoadList />
+      </Localstyles.ContainerLoad>
+    )
+  }
+
+  return (
+    <Localstyles.Container>
+      <Localstyles.SafeAreaView>
+        <Localstyles.ScrollView>
+          <Localstyles.Frame>
+            <Typography text={controller.states.data?.word ?? ''} variant="body2" color="gray400" />
+            <Typography
+              text={
+                controller.states.data?.phonetic
+                  ? controller.states.data?.phonetic
+                      .replace('/', '')
+                      .replace('/', '')
+                      .replace('ˌ', '')
+                  : ''
+              }
+              variant="body3"
+              color="gray300"
+            />
+          </Localstyles.Frame>
+
+          <Localstyles.ToHear>
+            <Localstyles.ButtonPlay onPress={() => alert('TODO')}>
+              <Localstyles.Icon name="play" />
+            </Localstyles.ButtonPlay>
+            <Typography text="To hear" variant="subheading" color="primary" />
+          </Localstyles.ToHear>
+
+          <Typography text="Meanings" variant="heading" color="gray600" />
+          <Typography
+            text={
+              controller.states.data?.meanings
+                ? controller.states.data?.meanings[0].definitions[0].definition
+                : 'No meanings'
+            }
+            variant="body3"
+            color="gray600"
+            style={{ marginTop: 8 }}
+          />
+        </Localstyles.ScrollView>
+
+        <Localstyles.Nav>
+          <Localstyles.WrapperNav>
+            <Button
+              text="Go back"
+              variant="outline"
+              onPress={() => controller.handles.handleGoBack()}
+            />
+          </Localstyles.WrapperNav>
+
+          {controller.states.dataNext !== null && (
+            <Localstyles.WrapperNav>
+              <Button
+                text="Next"
+                variant="primary"
+                onPress={() => controller.handles.handleGoNext()}
+              />
+            </Localstyles.WrapperNav>
+          )}
+        </Localstyles.Nav>
+      </Localstyles.SafeAreaView>
+    </Localstyles.Container>
+  )
+}

@@ -1,3 +1,4 @@
+import { ItemWordHistoryModel } from '@Domain/models/ItemWordHistoryModel'
 import { ItemWordModel } from '@Domain/models/ItemWordModel'
 
 // Action Types
@@ -60,7 +61,7 @@ type AuthActionTypes =
 // Estado inicial
 export interface WordsState {
   load: boolean
-  dataHistory: ItemWordModel[]
+  dataHistory: ItemWordHistoryModel[]
   dataFavorites: ItemWordModel[]
 }
 
@@ -99,7 +100,10 @@ export default function reducer(state = initialState, action: AuthActionTypes): 
     case Types.UPDATE_HISTORY:
       return {
         ...state,
-        dataHistory: [...state.dataHistory, { id: action.payload.id, word: action.payload.word }]
+        dataHistory: [
+          ...state.dataHistory,
+          { id: action.payload.id, word: action.payload.word, createdAt: action.payload.createdAt }
+        ]
       }
     case Types.UPDATE_LOAD:
       return {

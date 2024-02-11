@@ -9,8 +9,19 @@ import { getFavorites } from './words/getFavorites'
 import { getHistory } from './words/getHistory'
 import { saveFavorites } from './words/saveFavorites'
 import { saveHistory } from './words/saveHistory'
+import { getDetailWord } from './words/getDetailWord'
+import { getNextWord } from './words/getNextWord'
 
 export const Services = {
   auth: { signin, signout, signup, logged },
-  words: { getWords, deleteFavorite, getFavorites, getHistory, saveFavorites, saveHistory }
+  words: {
+    getWords,
+    deleteFavorite,
+    getFavorites,
+    getHistory,
+    saveFavorites,
+    saveHistory,
+    getDetailWord,
+    getNextWord
+  }
 }

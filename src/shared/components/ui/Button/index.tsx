@@ -4,7 +4,7 @@ import * as LocalStyles from './styles'
 import { useTheme } from 'styled-components/native'
 import { getVariant } from './getVariant'
 
-export type VariantButton = 'primary' | 'inverse'
+export type VariantButton = 'primary' | 'inverse' | 'outline'
 
 interface InterfaceButton extends TouchableOpacityProps {
   text: string

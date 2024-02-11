@@ -23,7 +23,16 @@ export function WordList() {
   }
 
   function renderItem(item: ItemWordModel) {
-    return <CardWord key={item.id} item={item} />
+    return (
+      <CardWord
+        key={item.id}
+        item={item}
+        onPress={() => {
+          controller.handles.handleSaveHistory(item)
+          controller.handles.handleGoDetail(item)
+        }}
+      />
+    )
   }
 
   return (

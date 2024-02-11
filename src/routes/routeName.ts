@@ -4,5 +4,6 @@ export const routeName = {
   Splash: 'Splash',
   WordList: 'WordList',
   History: 'History',
-  Favorites: 'Favorites'
+  Favorites: 'Favorites',
+  Detail: 'Detail'
 }

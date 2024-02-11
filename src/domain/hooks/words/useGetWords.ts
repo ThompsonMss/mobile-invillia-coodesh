@@ -10,7 +10,7 @@ export function useGetWords() {
   const [loading, setLoading] = React.useState(false)
   const [lastKey, setLastKey] = React.useState<string | null>(null)
 
-  const criarObservable = (auxLastKey: string | null) => {
+  const createObservable = (auxLastKey: string | null) => {
     return new Observable<{ data: ItemWordModel[]; lastKey: string | null }>((observer) => {
       Services.words
         .getWords({ lastKey: auxLastKey })
@@ -31,9 +31,9 @@ export function useGetWords() {
 
     setLoading(true)
 
-    criarObservable(auxLastKey)
+    createObservable(auxLastKey)
       .pipe(
-        take(1), // Garante que a assinatura seja cancelada após a primeira emissão
+        take(1),
         map((result) => {
           // Verificando palavras duplicadas.
           const newData: ItemWordModel[] = [...data]

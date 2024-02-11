@@ -19,6 +19,15 @@ export function getVariant(typeVariant: VariantButton, theme: DefaultTheme): Int
     }
   }
 
+  if (typeVariant === 'outline') {
+    return {
+      backgroundColor: 'transparent',
+      borderColor: theme.colors.primary,
+      loadColor: theme.colors.primary,
+      textColor: 'primary'
+    }
+  }
+
   if (typeVariant === 'inverse') {
     return {
       backgroundColor: theme.colors.inverse,
