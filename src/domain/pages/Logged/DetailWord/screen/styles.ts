@@ -55,6 +55,26 @@ export const Nav = styled.View`
 export const WrapperNav = styled.View`
   flex: 1;
 `
+export const Favorite = styled.TouchableOpacity`
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: ${(props) => props.theme.colors.gray200};
+  padding-bottom: 16px;
+`
+
+export const ButtonFavorite = styled.View``
+
+export const IconFavorite = styled(AntDesign).attrs(() => ({
+  size: 30
+}))``
+
 export const ToHear = styled.View`
   width: 100%;
   flex-direction: row;

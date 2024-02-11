@@ -6,9 +6,25 @@ import React from 'react'
 import { Alert } from 'react-native'
 
 import { Audio } from 'expo-av'
+import { Services } from '@Domain/services'
+import { WordsActions } from '@Store/ducks/words'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { RootState } from '@Store/reducers'
 
 export function useController() {
+  const dispatch = useDispatch()
   const { data, exec, loading, error, dataNext } = useGetDetail()
+  const favorites = useSelector((state: RootState) => state.words.dataFavorites)
+
+  const isFavorite: ItemWordModel | null = React.useMemo(() => {
+    if (data?.word) {
+      const has = favorites.find((item) => item.word === data?.word)
+      return has ? has : null
+    }
+
+    return null
+  }, [data, favorites])
 
   const hasSound: string | null = React.useMemo(() => {
     if (data?.phonetics.length) {
@@ -78,6 +94,35 @@ export function useController() {
   function handleGoNext() {
     if (dataNext !== null) {
       navigation.replace(routeName.Detail, { item: dataNext })
+
+      Services.words
+        .saveHistory(dataNext)
+        .then((success) => {
+          if (success) {
+            dispatch(
+              WordsActions.updateHistory({ ...dataNext, createdAt: new Date().toISOString() })
+            )
+          }
+        })
+        .catch((error) => {
+          Alert.alert('Attention', `Unable to save word in history.\nError:${error?.message}`)
+        })
+    }
+  }
+
+  async function handleFavorite() {
+    try {
+      if (data?.word) {
+        if (isFavorite) {
+          Services.words.deleteFavorite(isFavorite.id)
+          dispatch(WordsActions.deleteFavorite(data?.word))
+        } else {
+          await Services.words.saveFavorites({ id: data?.word, word: data?.word })
+          dispatch(WordsActions.updateFavorites({ id: data?.word, word: data?.word }))
+        }
+      }
+    } catch (error) {
+      Alert.alert('Attention', ``)
     }
   }
 
@@ -88,12 +133,14 @@ export function useController() {
       loading,
       data,
       hasSound,
-      meanings
+      meanings,
+      isFavorite
     },
     handles: {
       handleGoNext,
       handleGoBack,
-      playAudio
+      playAudio,
+      handleFavorite
     }
   }
 }

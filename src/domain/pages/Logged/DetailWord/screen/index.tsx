@@ -2,9 +2,11 @@ import { Button, Typography } from '@Shared/components/ui'
 import { useController } from '../controller/useController'
 import * as Localstyles from './styles'
 import { Alert } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 export function DetailWord() {
   const controller = useController()
+  const theme = useTheme()
 
   if (controller.states.loading || controller.states.error) {
     return (
@@ -34,6 +36,26 @@ export function DetailWord() {
               color="gray300"
             />
           </Localstyles.Frame>
+
+          <Localstyles.Favorite
+            onPress={() => {
+              controller.handles.handleFavorite()
+            }}
+          >
+            <Localstyles.ButtonFavorite>
+              <Localstyles.IconFavorite
+                name="star"
+                color={controller.states.isFavorite ? theme.colors.inverse : theme.colors.gray300}
+              />
+            </Localstyles.ButtonFavorite>
+            <Typography
+              text={
+                controller.states.isFavorite ? 'Is a favorite word' : 'Do you want to favorite?'
+              }
+              variant="body2"
+              color="gray300"
+            />
+          </Localstyles.Favorite>
 
           <Localstyles.ToHear>
             <Localstyles.ButtonPlay
