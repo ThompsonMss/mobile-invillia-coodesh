@@ -20,14 +20,18 @@ Foi utilizado diversos recursos do React Native para melhorar a performance, arq
 - Rxjs
 - Styled Component
 
-![Imagens de apresentação](https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/890d90f7-2ccd-49db-87d5-da020182fb9a)
-![Imagens de apresentação](https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/e21d5b65-36f4-4997-b8f7-ccfc761db393)
-![Imagens de apresentação](https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/0497de01-b066-4cd3-8bd9-99a31d596c79)
-![Imagens de apresentação](https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/bc523ebd-bf8b-437a-98fe-16e2ac790554)
-![Imagens de apresentação](https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/7cab7f90-7a81-415b-b762-49141f963dbc)
-![Imagens de apresentação](https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/8c37e975-7f95-464c-be1b-e8e747be28c5)
+<br />
 
----
+## Screenshot
+
+<div>
+   <img src="https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/890d90f7-2ccd-49db-87d5-da020182fb9a" width="200" />
+  <img src="https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/e21d5b65-36f4-4997-b8f7-ccfc761db393" width="200" />
+  <img src="https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/0497de01-b066-4cd3-8bd9-99a31d596c79" width="200" />
+  <img src="https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/bc523ebd-bf8b-437a-98fe-16e2ac790554" width="200" />
+  <img src="https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/7cab7f90-7a81-415b-b762-49141f963dbc" width="200" />
+  <img src="https://github.com/ThompsonMss/app-codex-api-correrios-react-native/assets/30129295/8c37e975-7f95-464c-be1b-e8e747be28c5" width="200" />
+</div>
 
 <br>
 
