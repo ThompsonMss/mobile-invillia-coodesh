@@ -9,6 +9,7 @@ export const lightTheme: InterfaceTheme = {
 
     background: '#F2F2F6',
 
+    gray0: '#ffffff',
     gray100: '#F2F2F2',
     gray150: '#e5e5e5',
     gray200: '#D9D9D9',

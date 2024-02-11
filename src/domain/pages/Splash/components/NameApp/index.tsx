@@ -25,5 +25,11 @@ export function NameApp() {
     }
   })
 
-  return <LocalStyles.Image style={stylesText} source={appInfoConstants.logoAppOnlyName} />
+  return (
+    <LocalStyles.Image
+      resizeMode={'contain'}
+      style={stylesText}
+      source={appInfoConstants.logoAppOnlyName}
+    />
+  )
 }

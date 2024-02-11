@@ -6,6 +6,7 @@ export interface InterfaceThemeColors {
 
   background: string
 
+  gray0: string
   gray100: string
   gray150: string
   gray200: string

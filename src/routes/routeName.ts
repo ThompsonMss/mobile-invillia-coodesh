@@ -1,5 +1,8 @@
 export const routeName = {
   Home: 'Home',
   Signin: 'Signin',
-  Splash: 'Splash'
+  Splash: 'Splash',
+  WordList: 'WordList',
+  History: 'History',
+  Favorites: 'Favorites'
 }

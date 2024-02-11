@@ -26,7 +26,7 @@ export function Typography({ variant, color, style, text }: TypographyProps): Re
     case 'subheading':
       textStyle = {
         fontSize: RFValue(18),
-        fontWeight: 'normal'
+        fontWeight: 'bold'
       }
       break
     case 'body1':

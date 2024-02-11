@@ -25,5 +25,12 @@ export function Logo() {
     }
   })
 
-  return <LocalStyles.Image style={stylesLogo} source={appInfoConstants.logo} alt="App logo" />
+  return (
+    <LocalStyles.Image
+      resizeMode={'contain'}
+      style={stylesLogo}
+      source={appInfoConstants.logo}
+      alt="App logo"
+    />
+  )
 }
