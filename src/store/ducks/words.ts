@@ -5,6 +5,7 @@ const Types = {
   SET_HISTORY: 'words/SET_HISTORY',
   UPDATE_HISTORY: 'words/UPDATE_HISTORY',
   SET_FAVORITES: 'words/SET_FAVORITES',
+  DELETE_FAVORITES: 'words/DELETE_FAVORITES',
   UPDATE_FAVORITES: 'words/UPDATE_FAVORITES',
   UPDATE_LOAD: 'words/UPDATE_LOAD'
 } as const
@@ -31,6 +32,11 @@ type UpdateFavoritesAction = {
   payload: Omit<InterfacePayloadHistoryAndFavorites, 'createdAt'>
 }
 
+type DeleteFavoritesAction = {
+  type: typeof Types.DELETE_FAVORITES
+  payload: { id: string }
+}
+
 type SetFavoritesAction = {
   type: typeof Types.SET_FAVORITES
   payload: Omit<InterfacePayloadHistoryAndFavorites, 'createdAt'>[]
@@ -49,6 +55,7 @@ type AuthActionTypes =
   | UpdateLoadAction
   | SetHistoryAction
   | SetFavoritesAction
+  | DeleteFavoritesAction
 
 // Estado inicial
 export interface WordsState {
@@ -66,6 +73,11 @@ const initialState: WordsState = {
 // Reducer
 export default function reducer(state = initialState, action: AuthActionTypes): WordsState {
   switch (action.type) {
+    case Types.DELETE_FAVORITES:
+      return {
+        ...state,
+        dataFavorites: state.dataFavorites.filter((item) => item.id !== action.payload.id)
+      }
     case Types.SET_FAVORITES:
       return {
         ...state,
@@ -125,6 +137,12 @@ export const WordsActions = {
     type: Types.UPDATE_LOAD,
     payload: {
       load: load
+    }
+  }),
+  deleteFavorite: (id: string): DeleteFavoritesAction => ({
+    type: Types.DELETE_FAVORITES,
+    payload: {
+      id: id
     }
   })
 }
