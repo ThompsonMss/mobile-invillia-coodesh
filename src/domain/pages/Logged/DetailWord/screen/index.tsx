@@ -1,6 +1,7 @@
 import { Button, Typography } from '@Shared/components/ui'
 import { useController } from '../controller/useController'
 import * as Localstyles from './styles'
+import { Alert } from 'react-native'
 
 export function DetailWord() {
   const controller = useController()
@@ -35,19 +36,27 @@ export function DetailWord() {
           </Localstyles.Frame>
 
           <Localstyles.ToHear>
-            <Localstyles.ButtonPlay onPress={() => alert('TODO')}>
+            <Localstyles.ButtonPlay
+              onPress={() => {
+                if (controller.states.hasSound) {
+                  controller.handles.playAudio()
+                } else {
+                  Alert.alert('Attention', 'Audio is not available')
+                }
+              }}
+            >
               <Localstyles.Icon name="play" />
             </Localstyles.ButtonPlay>
-            <Typography text="To hear" variant="subheading" color="primary" />
+            <Typography
+              text={controller.states.hasSound ? 'To hear' : 'No audio for that word'}
+              variant="subheading"
+              color="primary"
+            />
           </Localstyles.ToHear>
 
           <Typography text="Meanings" variant="heading" color="gray600" />
           <Typography
-            text={
-              controller.states.data?.meanings
-                ? controller.states.data?.meanings[0].definitions[0].definition
-                : 'No meanings'
-            }
+            text={controller.states.meanings ? controller.states.meanings : 'No meanings'}
             variant="body3"
             color="gray600"
             style={{ marginTop: 8 }}
