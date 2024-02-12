@@ -10,7 +10,14 @@ export function Favorites() {
   const controller = useController()
 
   function renderItem(item: ItemWordModel) {
-    return <CardWord key={item.id} item={item} isFavorite />
+    return (
+      <CardWord
+        key={item.id}
+        item={item}
+        isFavorite
+        onPress={() => controller.handles.handleGoDetail(item)}
+      />
+    )
   }
 
   return (

@@ -63,10 +63,14 @@ export function useController() {
   const playAudio = async () => {
     if (hasSound) {
       try {
+        await Audio.setAudioModeAsync({
+          playsInSilentModeIOS: true
+        })
+
         const { sound } = await Audio.Sound.createAsync({ uri: hasSound }, { shouldPlay: true })
         await sound.playAsync()
       } catch (error) {
-        Alert.alert('Attention', 'Error sound')
+        Alert.alert('Attention', 'Error playing audio')
       }
     }
   }

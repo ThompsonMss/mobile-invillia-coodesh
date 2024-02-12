@@ -20,11 +20,18 @@ export function ContentSignin({
 }: InterfaceContentSignin) {
   const controller = useController()
 
-  const stylesKeyboard: any = {
-    top: formSelected ? (controller.states.keyboardOpen === true ? 0 : 'auto') : 'auto',
-    height: formSelected ? (controller.states.keyboardOpen ? '100%' : 'auto') : 'auto',
-    paddingTop: formSelected ? (controller.states.keyboardOpen ? 80 : 20) : 20
-  }
+  const stylesKeyboard: any =
+    formSelected && controller.states.keyboardOpen
+      ? {
+          top: 0,
+          height: '100%',
+          paddingTop: 80
+        }
+      : {
+          height: 'auto',
+          paddingTop: 20,
+          bottom: 0
+        }
 
   const styles = useAnimatedStyle(() => {
     return {

@@ -86,9 +86,8 @@ export const ToHear = styled.View`
 
 export const ButtonPlay = styled.TouchableOpacity``
 
-export const Icon = styled(AntDesign).attrs(({ theme }) => ({
-  size: 40,
-  color: theme.colors.primary
+export const Icon = styled(AntDesign).attrs(() => ({
+  size: 40
 }))``
 
 export const ContainerLoad = styled.View`

@@ -67,12 +67,15 @@ export function DetailWord() {
                 }
               }}
             >
-              <Localstyles.Icon name="play" />
+              <Localstyles.Icon
+                name="play"
+                color={controller.states.hasSound ? theme.colors.primary : theme.colors.gray300}
+              />
             </Localstyles.ButtonPlay>
             <Typography
               text={controller.states.hasSound ? 'To hear' : 'No audio for that word'}
               variant="subheading"
-              color="primary"
+              color={controller.states.hasSound ? 'primary' : 'gray300'}
             />
           </Localstyles.ToHear>
 

@@ -14,6 +14,7 @@ Foi utilizado diversos recursos do React Native para melhorar a performance, arq
 - Axios
 - Date Fns
 - Expo
+- Expo AV (Audio)
 - Firebase
 - React Native Reanimated
 - Redux
