@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 export const Container = styled.View`
   flex: 1;
@@ -8,7 +9,8 @@ export const Container = styled.View`
 
 export const ScrollView = styled.ScrollView.attrs({
   contentContainerStyle: {
-    gap: 12
+    gap: 12,
+    paddingBottom: RFValue(76)
   }
 })`
   margin-top: ${(props) => props.theme.metrics.spacing4}px;

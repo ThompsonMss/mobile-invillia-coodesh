@@ -13,7 +13,7 @@ const Tab = createMaterialTopTabNavigator()
 
 export function Home() {
   const theme = useTheme()
-  useController()
+  const controller = useController()
 
   return (
     <LocalStyles.SafeAreaView>
@@ -34,6 +34,10 @@ export function Home() {
           component={Favorites}
         />
       </Tab.Navigator>
+
+      <LocalStyles.ButtonLogout onPress={() => controller.handles.handleLogout()}>
+        <LocalStyles.IconLogout name="logout" />
+      </LocalStyles.ButtonLogout>
     </LocalStyles.SafeAreaView>
   )
 }

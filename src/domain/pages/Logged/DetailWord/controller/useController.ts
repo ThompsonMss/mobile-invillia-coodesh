@@ -16,6 +16,7 @@ export function useController() {
   const dispatch = useDispatch()
   const { data, exec, loading, error, dataNext } = useGetDetail()
   const favorites = useSelector((state: RootState) => state.words.dataFavorites)
+  const idUser = useSelector((state: RootState) => state.auth.uid)
 
   const isFavorite: ItemWordModel | null = React.useMemo(() => {
     if (data?.word) {
@@ -100,7 +101,7 @@ export function useController() {
       navigation.replace(routeName.Detail, { item: dataNext })
 
       Services.words
-        .saveHistory(dataNext)
+        .saveHistory(dataNext, idUser as string)
         .then((success) => {
           if (success) {
             dispatch(
@@ -118,10 +119,10 @@ export function useController() {
     try {
       if (data?.word) {
         if (isFavorite) {
-          Services.words.deleteFavorite(isFavorite.id)
+          Services.words.deleteFavorite(isFavorite.id, idUser as string)
           dispatch(WordsActions.deleteFavorite(data?.word))
         } else {
-          await Services.words.saveFavorites({ id: data?.word, word: data?.word })
+          await Services.words.saveFavorites({ id: data?.word, word: data?.word }, idUser as string)
           dispatch(WordsActions.updateFavorites({ id: data?.word, word: data?.word }))
         }
       }

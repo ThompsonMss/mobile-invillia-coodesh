@@ -4,12 +4,12 @@ import { keysStorage } from '@Shared/constants/keysStorage'
 import { getErrorMessageHelper } from '@Shared/helpers/getErrorMessageHelper'
 import { storage } from '@Shared/helpers/storage'
 
-export async function getFavorites() {
+export async function getFavorites(idUser: string) {
   try {
     const keys = await storage.getAllKeys()
 
     const validKeysWords = keys.filter((key) => {
-      if (key.includes(keysStorage.favorite)) {
+      if (key.includes(`${keysStorage.favorite}${idUser}`)) {
         return true
       }
 

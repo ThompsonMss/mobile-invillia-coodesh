@@ -3,12 +3,15 @@ import { ItemWordModel } from '@Domain/models/ItemWordModel'
 import { Services } from '@Domain/services'
 import { routeName } from '@Routes/routeName'
 import { WordsActions } from '@Store/ducks/words'
+import { RootState } from '@Store/reducers'
 import { useNavigation } from '@react-navigation/native'
 import { Alert } from 'react-native'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
 export function useController() {
   const { data, loading, lastKey, exec } = useGetWords()
+  const idUser = useSelector((state: RootState) => state.auth.uid)
 
   const dispatch = useDispatch()
   const navigation = useNavigation<any>()
@@ -19,7 +22,7 @@ export function useController() {
 
   function handleSaveHistory(item: ItemWordModel) {
     Services.words
-      .saveHistory(item)
+      .saveHistory(item, idUser as string)
       .then((success) => {
         if (success) {
           dispatch(WordsActions.updateHistory({ ...item, createdAt: new Date().toISOString() }))

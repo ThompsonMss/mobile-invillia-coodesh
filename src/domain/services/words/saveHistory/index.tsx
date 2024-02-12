@@ -4,17 +4,20 @@ import { keysStorage } from '@Shared/constants/keysStorage'
 import { getErrorMessageHelper } from '@Shared/helpers/getErrorMessageHelper'
 import { storage } from '@Shared/helpers/storage'
 
-export async function saveHistory(data: Omit<ItemWordHistoryModel, 'createdAt'>): Promise<boolean> {
+export async function saveHistory(
+  data: Omit<ItemWordHistoryModel, 'createdAt'>,
+  idUser: string
+): Promise<boolean> {
   try {
     // Verificando se já está no banco.
-    const item = await storage.getItem(`${keysStorage.history}${data.id}`)
+    const item = await storage.getItem(`${keysStorage.history}${idUser}${data.id}`)
 
     if (item) {
       return false
     }
 
     await storage.setItem(
-      `${keysStorage.history}${data.id}`,
+      `${keysStorage.history}${idUser}${data.id}`,
       JSON.stringify({ ...data, createdAt: new Date().toISOString() })
     )
 

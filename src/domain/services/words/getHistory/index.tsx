@@ -4,12 +4,12 @@ import { keysStorage } from '@Shared/constants/keysStorage'
 import { getErrorMessageHelper } from '@Shared/helpers/getErrorMessageHelper'
 import { storage } from '@Shared/helpers/storage'
 
-export async function getHistory() {
+export async function getHistory(idUser: string) {
   try {
     const keys = await storage.getAllKeys()
 
     const validKeysWords = keys.filter((key) => {
-      if (key.includes(keysStorage.history)) {
+      if (key.includes(`${keysStorage.history}${idUser}`)) {
         return true
       }
 

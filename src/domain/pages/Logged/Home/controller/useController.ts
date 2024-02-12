@@ -1,9 +1,14 @@
 import { ItemWordHistoryModel } from '@Domain/models/ItemWordHistoryModel'
 import { ItemWordModel } from '@Domain/models/ItemWordModel'
 import { Services } from '@Domain/services'
+import { routeName } from '@Routes/routeName'
+import { AuthActions } from '@Store/ducks/auth'
 import { WordsActions } from '@Store/ducks/words'
+import { RootState } from '@Store/reducers'
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Alert } from 'react-native'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { Observable } from 'rxjs'
 
@@ -14,11 +19,13 @@ interface InterfaceTypeValue {
 
 export function useController() {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
+  const idUser = useSelector((state: RootState) => state.auth.uid)
 
   function getWords(): Promise<{ history: ItemWordHistoryModel[]; favorites: ItemWordModel[] }> {
     return new Promise((resolve, reject) => {
-      const historyPromise = Services.words.getHistory()
-      const favoritesPromise = Services.words.getFavorites()
+      const historyPromise = Services.words.getHistory(idUser as string)
+      const favoritesPromise = Services.words.getFavorites(idUser as string)
 
       Promise.all([historyPromise, favoritesPromise])
         .then(([historyData, favoritesData]) => {
@@ -63,4 +70,24 @@ export function useController() {
       }
     })
   }, [])
+
+  function handleLogout() {
+    dispatch(AuthActions.logout())
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 1,
+        routes: [
+          {
+            name: routeName.Signin
+          }
+        ]
+      })
+    )
+  }
+
+  return {
+    handles: {
+      handleLogout
+    }
+  }
 }
